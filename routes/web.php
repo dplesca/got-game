@@ -14,7 +14,7 @@
 Auth::routes();
 
 Route::get('/home', function(){
-    return redirect('home');
+    return redirect('/');
 });
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/make-your-picks', 'HomeController@form');
