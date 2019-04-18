@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
         <h2>Tell us who makes it</h2>
-        <form method="post" action="/submit">
+        <form id="form-characters" method="post" action="/submit">
             @csrf
             <?php foreach($characters as $c):?>
             <div class="form-group row">
@@ -18,13 +18,13 @@
                 </div>
                 <div class="col-sm-4">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="ww<?= $c->id ?>" id="ww<?= $c->id ?>" value="1">
+                    <input class="form-check-input" type="checkbox" disabled name="ww<?= $c->id ?>" id="ww<?= $c->id ?>" value="1">
                     <label class="form-check-label" for="ww<?= $c->id ?>">White Walker</label>
                 </div></div>
             </div>
             <?php endforeach;?>
             <div class="form-group row">
-                <div class="col-sm-4 offset-md-3">
+                <div class="col-sm-7 offset-md-3">
                     <button type="submit" class="btn btn-primary btn-lg">I'm sure of who lives and who dies</button>
                 </div>
             </div>
