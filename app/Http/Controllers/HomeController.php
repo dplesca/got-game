@@ -27,8 +27,16 @@ class HomeController extends Controller
     public function index()
     {
         $picks = Pick::where('user_id', auth()->id())->get();
-        $picks = $picks->toArray();
-        return view('home')->with('picks', $picks);
+        $points = 0;
+        foreach($picks as $pick){
+            if ($pick->pick === $pick->character->status){
+                $points++;
+            }
+        }
+
+        return view('home')
+            ->with('picks', $picks)
+            ->with('points', $points);
     }
 
     /**

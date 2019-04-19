@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
@@ -15,9 +15,11 @@
                     @endif
 
                     @if(count($picks) < 27)
-                    <a class="btn btn-primary" href="/make-your-picks">Make Your Picks</a>
+                    <a class="btn btn-primary" href="/make-your-picks">Make Your Character Survival Picks</a>
                     @else
-                    You have 0 points.
+                    <h4>Right now, you have {{ $points }} points. The show is not yet over.</h4>
+                    <h5>Here's your picks</h5>
+                    @include('usertable')
                     @endif
                 </div>
             </div>
