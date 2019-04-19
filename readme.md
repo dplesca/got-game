@@ -6,7 +6,7 @@ The game is inspired by
 
 To deploy: 
  - git clone
- - composer install 
- - make `.env` file with db credentials (use `.env.example` as help)
- - php artisan migrate (to make tables)
- - php artisan db:seed --class=Characters (to seed charaters table, you can add aditional ones)
+ - `composer install`
+ - create `.env` file with db credentials (use `.env.example` as help)
+ - `php artisan migrate` (to make tables)
+ - `php artisan db:seed --class=Characters` (to seed charaters table, you can add aditional ones)
