@@ -87,7 +87,7 @@ class HomeController extends Controller
             $user->points = $this->getPoints($user);
         }
         return view('rankings')
-            ->with('users', $users)
+            ->with('users', $users->sortBy('points', SORT_DESC, true))
             ->with('characters', Character::all());
     }
 
