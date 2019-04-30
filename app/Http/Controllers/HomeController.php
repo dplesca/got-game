@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Pick;
 use App\Character;
 use Illuminate\Support\Str;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -74,5 +75,31 @@ class HomeController extends Controller
             }
         }
         return redirect('home');
+    }
+
+    /**
+     * rankings page
+     */
+    public function rankings()
+    {
+        $users = User::all();
+        foreach ($users as $user){
+            $user->points = $this->getPoints($user);
+        }
+        return view('rankings')
+            ->with('users', $users)
+            ->with('characters', Character::all());
+    }
+
+    private function getPoints(User $u)
+    {
+        $picks = Pick::where('user_id', $u->id)->get();
+        $points = 0;
+        foreach($picks as $pick){
+            if ($pick->pick === $pick->character->status){
+                $points++;
+            }
+        }
+        return $points;
     }
 }

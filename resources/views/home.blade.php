@@ -19,7 +19,7 @@
                     @else
                     <h4>Right now, you have {{ $points }} points. The show is not yet over.</h4>
                     <h5>Here's your picks</h5>
-                    @include('usertable')
+                    @include('user-picks')
                     @endif
                 </div>
             </div>

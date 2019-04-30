@@ -19,3 +19,4 @@ Route::get('/home', function(){
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/make-your-picks', 'HomeController@form');
 Route::post('/submit', 'HomeController@submit');
+Route::get('/rankings', 'HomeController@rankings');
