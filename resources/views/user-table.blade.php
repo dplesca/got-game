@@ -8,7 +8,7 @@
   <tbody>
     @foreach($users as $u)
     <tr>
-      <td><h4>{{ $u->name }}</h4></td>
+      <td><h4><a href="/user-picks/{{$u->id}}">{{ $u->name }}</a></h4></td>
       <td>{{ $u->points }}</td>
     </tr>
     @endforeach
