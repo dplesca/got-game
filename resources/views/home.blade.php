@@ -14,13 +14,13 @@
                         </div>
                     @endif
 
-                    @if(count($picks) < 27)
-                    <a class="btn btn-primary" href="/make-your-picks">Make Your Character Survival Picks</a>
-                    @else
+                    @if($page == 'home')
                     <h4>Right now, you have {{ $points }} points. The show is not yet over.</h4>
                     <h5>Here's your picks</h5>
-                    @include('user-picks')
+                    @elseif ($page == 'user')
+                    <h4>Right now, {{ $user->name }} has {{ $points }} points. The show is not yet over.</h4>
                     @endif
+                    @include('user-picks')
                 </div>
             </div>
         </div>

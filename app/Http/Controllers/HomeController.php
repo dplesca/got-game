@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['rankings', 'userPicks']);
     }
 
     /**
@@ -28,15 +28,11 @@ class HomeController extends Controller
     public function index()
     {
         $picks = Pick::where('user_id', auth()->id())->get();
-        $points = 0;
-        foreach($picks as $pick){
-            if ($pick->pick === $pick->character->status){
-                $points++;
-            }
-        }
+        $points = $this->getPoints(auth()->user());
 
         return view('home')
             ->with('picks', $picks)
+            ->with('page', 'home')
             ->with('points', $points);
     }
 
@@ -89,6 +85,25 @@ class HomeController extends Controller
         return view('rankings')
             ->with('users', $users->sortBy('points', SORT_DESC, true))
             ->with('characters', Character::all());
+    }
+
+    /**
+     * Show the picks for the given user.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function userPicks($id)
+    {
+        $user = User::find($id);
+        $picks = Pick::where('user_id', $user->id)->get();
+        $points = $this->getPoints($user);
+
+        return view('home')
+            ->with('picks', $picks)
+            ->with('user', $user)
+            ->with('page', 'user')
+            ->with('points', $points);
     }
 
     private function getPoints(User $u)
