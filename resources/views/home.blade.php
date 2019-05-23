@@ -15,10 +15,10 @@
                     @endif
 
                     @if($page == 'home')
-                    <h4>Right now, you have {{ $points }} points. The show is not yet over.</h4>
+                    <h4>Right now, you have {{ $points }} points. The show is over.</h4>
                     <h5>Here's your picks</h5>
                     @elseif ($page == 'user')
-                    <h4>Right now, {{ $user->name }} has {{ $points }} points. The show is not yet over.</h4>
+                    <h4>Right now, {{ $user->name }} has {{ $points }} points. The show is over.</h4>
                     @endif
                     @include('user-picks')
                 </div>
